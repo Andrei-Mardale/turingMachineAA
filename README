@@ -1,0 +1,31 @@
+PARTEA I - Masina Turing
+Am ales sa reprezint Masina Turing in memorie sub forma a 2 structuri de date.
+Prima contine 2 valori intregi (numarul de stari si numarul de stari finale), impreuna cu un vector de lungime egala cu numarul de stari.
+Acesta contine reprezentarea in memorie a unei stari care este sub forma 3 vectori ce descriu comportamentul ei: starea urmatoare, caracterul scris si mutarea.
+Lungimea celor 3 vector este egala cu dimensiunea alfabetului sigma.
+
+Am functii pentru alocarea memoriei pentru Masina Turing, pentru o stare, pentru citirea si rularea Masinii Turing.
+Am ales sa aplic o transformarea asupra datelor de intrare astfel ca reprezentarea ASCII trece intr-o reprezentarea pe numere intregi incepand de la 0, facand astfel indexarea datelor mult mai usoara. (nu mai este nevoie sa fac o mapare la fiecare pas deorece o fac o data la inceput si o data la sfarsit, inainte de output).
+
+In cazul in care se ajunge intr-o tranzitie nedefinita, programul se opreste si printeaza mesajul "Eroare!".
+Acelasi lucru se intampla daca Masina Turing "se agata": adica se depasesc limitele vectorul de intrare.
+
+Un caz care nu este tratat este cel in care Masina Turing ramane "agatata" pe un singur caracter.
+ex: la o pozitie i raman pe hold si schimb constant valoarea, neiesind din starea respectiva niciodata. In acest caz, programul nu se termina.
+
+Am hardcodat dimensiunea sirului de intrare la 150 de caractere (in enunt se da 100) si numele fisierelor de in/out.
+
+PARTEA II - Comparare de stringuri de lungime egala
+
+Aplic urmatorul algoritm:
+1) Anuleaza bitii identici incepand de la cel mai semnificativ.
+2) Daca se intalneste un bit diferit procedeaza astfel:
+	- daca perechea este (1, 0) atunci incearca sa scrii 0
+	- daca perechea este (0, 1) atunci incearca sa scrii 1
+	"Incercarea" de a scrie 1 sau 0 se face astfel:
+	- cand ai ajuns la pozitia de verificare de la cuvantul 2, pune # si du-te o pozitie mai la dreapta
+	Daca este o cifra, du-te inapoi sterge tot din cuvantul 1, vino la loc si sterge tot din 2, apoi pune 1/0
+	Daca este # atunci pune direct 1/0
+3) Pentru a verifica daca masina trebuie oprita, la fiecare bit anulat de la cuvantul 2 du-te o pozitie mai la dreapta si vezi daca ai # sau cifra. Daca ai # atunci pune 1 si opreste-te (nu s-a gasit niciun bit diferit deci cuvinte sunt egale => 1). Daca ai cifra dute la prima cifra din cuvantul 1 si repeta algoritmul.
+
+
