@@ -10,7 +10,7 @@ A C implementation which simulates a Turing Machine.
 "make run"
 
 #Input
-The program expects the codification of a Turing Machin (the rules for this are described in the statement) and it's input in the file "date.in"
+The program expects the codification of a Turing Machine (the rules for this are described in the statement) and it's input in the file "date.in"
 
 #Output
 The program executes the Turing Machine and outputs the result to the file "date.out".
